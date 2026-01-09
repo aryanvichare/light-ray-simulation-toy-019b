@@ -276,7 +276,7 @@ export function App() {
     // Drawing function
   const draw = useCallback(() => {
     if (!ctx) return;
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillStyle = '#1f2937'; ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     // Draw objects
     objects.forEach(obj => {
@@ -347,8 +347,8 @@ export function App() {
   // TODO: Ray tracing logic
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">Light Ray Toy</h1>
+    <div className="min-h-screen bg-gray-900 p-4">
+      <h1 className="text-3xl font-bold mb-4 text-white">Light Ray Toy</h1>
       <div className="flex gap-4 mb-4">
         <button onClick={() => addObject('prism')} className="px-4 py-2 bg-blue-500 text-white rounded">Add Prism</button>
         <button onClick={() => addObject('mirror')} className="px-4 py-2 bg-gray-500 text-white rounded">Add Mirror</button>
@@ -356,17 +356,17 @@ export function App() {
           { id: 'light1', type: 'light' as const, position: { x: 100, y: 300 }, rotation: 0, size: 20 },
           { id: 'target1', type: 'target' as const, position: { x: 600, y: 100 }, rotation: 0, size: 30 },
         ])} className="px-4 py-2 bg-green-500 text-white rounded">Puzzle 1</button>
-        <div className={`ml-4 px-4 py-2 ${solved ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
+        <div className={`ml-4 px-4 py-2 ${solved ? 'bg-green-600 text-green-200' : 'bg-red-600 text-red-200'}`}>
           {solved ? 'Solved!' : 'Not Solved - Guide light to target'}
         </div>
-        <p className="ml-4 text-sm text-gray-600">Hold Shift + Drag to rotate objects</p>
+        <p className="ml-4 text-sm text-gray-300">Hold Shift + Drag to rotate objects</p>
       </div>
       <canvas
         ref={canvasRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        className="border rounded bg-white"
+        className="border rounded bg-gray-900"
       />
     </div>
   );
